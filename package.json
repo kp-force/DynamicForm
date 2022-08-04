@@ -1,0 +1,7 @@
+{
+  "name": "@wcd/kp-force.lwc-l63clrmb",
+  "version": "0.0.0",
+  "scripts": {
+    "serve": "npx wcd-cli@latest serve Mt0thQeMtK4vNgUlEg88 --open"
+  }
+}

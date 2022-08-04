@@ -1,0 +1,18 @@
+<template>
+	<div class="slds-m-horizontal_xx-small slds-m-bottom_x-small">
+
+		<lightning-
+
+		<template for:each={collection} for:item="field">
+			<lightning-input key={field.fieldName} type={field.type} name={field.fieldName} label={field.label}
+				value={field.value} onchange={handleChange} required={field.isRequired}>
+			</lightning-input>
+
+		</template>
+		<br>
+
+		<lightning-button label="Submit" onclick={submit}>
+		</lightning-button>
+
+	</div>
+</template>
