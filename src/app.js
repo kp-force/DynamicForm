@@ -11,16 +11,30 @@ export default class App extends LightningElement {
         fieldName : "firstName",
         label  : "First Name",
         value :	"sadsda",
-        required :true	
+        isRequired :true	
       },
 
       {
         type : "text",
         fieldName : "lastName",
         label  : "Last Name",
-        value :	"uoi"
+        value :	"uoi",
+        isRequired :true
+      },
+
+      {
+        type : "picklist",
+        fieldName : "salutation",
+        label  : "Salutation",        
+        isRequired :true,
+        options : [
+            { value : "Mr", label : "Mr"},
+            { value : "Mrs", label : "Mrs"},
+            { value : "Dr", label : "Dr"} ]
       }
     ];
+
+    this.errorMessage = "";
   }
   
   
