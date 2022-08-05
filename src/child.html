@@ -1,17 +1,47 @@
 <template>
 	<div class="slds-m-horizontal_xx-small slds-m-bottom_x-small">
 
-		<lightning-
+		<template if:true={showError}>
 
-		<template for:each={collection} for:item="field">
-			<lightning-input key={field.fieldName} type={field.type} name={field.fieldName} label={field.label}
-				value={field.value} onchange={handleChange} required={field.isRequired}>
-			</lightning-input>
+			<div class="slds-scoped-notification slds-media slds-media_center slds-theme_warning" role="status">
+				<div class="slds-media__figure">
+					<span class="slds-icon_container slds-icon-utility-warning" title="warning">
+				<svg class="slds-icon slds-icon_small" aria-hidden="true">
+				<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#warning"></use>
+				</svg>
+				<span class="slds-assistive-text">warning</span>
+					</span>
+				</div>
+				<div class="slds-media__body">
+					<p> {errorMessage}
+					</p>
+				</div>
+			</div>
+
+
 
 		</template>
+
+		<template for:each={localCopy} for:item="field">
+
+
+
+			<template if:true={field.isPicklist}>
+				<lightning-combobox key={field.fieldName} name={field.fieldName} label={field.label} value={field.value}
+					placeholder="Select a value" options={field.options} onchange={handleChange} required={field.isRequired}>
+				</lightning-combobox>
+			</template>
+			<!-- Name={field.fieldName};label={field.label};value={field.value};options={field.options};required={field.isRequired} -->
+			<template if:false={field.isPicklist}>
+				<lightning-input key={field.fieldName} type={field.type} name={field.fieldName} label={field.label}
+					value={field.value} onchange={handleChange} required={field.isRequired}>
+				</lightning-input>
+			</template>
+
+		</template> 
 		<br>
 
-		<lightning-button label="Submit" onclick={submit}>
+		<lightning-button label="Submit" onclick={submit} disabled={notAllFieldsSubmitted}>
 		</lightning-button>
 
 	</div>
